@@ -1,20 +1,16 @@
 pipeline{
     agent any
     stages{
-        stage('RUN') {
-            parallel {
-                stage('APP') {
-                    steps{
-                        echo 'Run the app'
-                        sh 'python3 app.py'
-                    }
-                }
-                stage('TEST') {
-                    steps{
-                        echo 'Test the app'
-                        sh 'python3 Integration_test.py'
-                    }
-                }
+        stage('APP') {
+            steps{
+                echo 'Run the app'
+                sh 'python3 app.py'
+            }
+        }
+        stage('TEST') {
+            steps{
+                echo 'Test the app'
+                sh 'python3 Integration_test.py'
             }
         }
 //        stage('STOP') {
