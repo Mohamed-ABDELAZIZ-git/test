@@ -7,7 +7,7 @@ pipeline{
                 sh 'python3 app.py'
             }
         }
-        stage('RUN') {
+        stage('RUN2') {
             parallel{
                 stage('TEST') {
                     steps{
