@@ -14,12 +14,10 @@ pipeline{
                     //sh 'nc -vz 0.0.0.0 5000'==1}
                 
                 
-        try {
-            sh 'wnc -vz 0.0.0.0 5000'
-            return true
-        } catch (exception) {
-            return false
-        }
+       script {
+         def r = sh script: nc -vz 0.0.0.0 5000', returnStdout: true
+         return (r == 0);
+       }
                 
                 }
                 
