@@ -6,6 +6,8 @@ pipeline{
                 echo 'Run the app'
                 sh 'python3 app.py'
             }
+        }
+        stage('RUN') {
             parallel{
                 stage('TEST') {
                     steps{
@@ -15,8 +17,8 @@ pipeline{
                 }
                 stage('STOP') {
                     steps{
-                    echo 'Exit the app'
-                    sh 'killall'
+                        echo 'Exit the app'
+                        sh 'killall'
                     }
                 }
             }
