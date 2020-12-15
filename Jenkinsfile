@@ -3,10 +3,11 @@ pipeline{
     stages{
         stage('APP') {
             steps{
-                sh 'nc  0.0.0.0 5000 < /dev/null ; echo $?'
+                //sh 'nc  0.0.0.0 5000 < /dev/null ; echo $?'
                 echo 'Run the app'
                 sh 'python3 app.py &'
-                //sh "sleep 10"  
+                sh "sleep 10"
+                sh 'nc  0.0.0.0 5000 < /dev/null ; echo $?'
             }
         }
         stage('TEST') {
