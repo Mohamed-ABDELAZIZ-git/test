@@ -9,7 +9,9 @@ pipeline{
         }
         stage('TEST') {
             options {
-                timeout(time: 10, unit: 'SECONDS') 
+                timeout(time: 10, unit: 'SECONDS') {
+                    echo 'Loading...'
+                }
             }
             steps{
                 echo 'Test the app'
