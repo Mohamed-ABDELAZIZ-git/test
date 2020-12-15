@@ -10,7 +10,20 @@ pipeline{
         }
         stage('TEST') {
             steps{
-                waitUntil {sh 'nc -vz 0.0.0.0 5000'==1}
+                waitUntil {
+                    //sh 'nc -vz 0.0.0.0 5000'==1}
+                
+                
+        try {
+            sh 'wnc -vz 0.0.0.0 5000'
+            return true
+        } catch (exception) {
+            return false
+        }
+                
+                }
+                
+                
                 echo 'Test the app'
                 sh 'python3 Integration_test.py'
             }
