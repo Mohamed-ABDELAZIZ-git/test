@@ -12,7 +12,7 @@ pipeline{
         }
         stage('TEST') {
             steps{
-                waitUntil {if (sh 'nc  0.0.0.0 5000 < /dev/null ; echo $?'==0) echo'waaw'}
+                waitUntil {if (sh script: 'nc  0.0.0.0 5000 < /dev/null ; echo $?'==0) echo'waaw'}
                 echo 'Test the app'
                 sh 'python3 Integration_test.py'
             }
