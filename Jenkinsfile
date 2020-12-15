@@ -4,10 +4,8 @@ pipeline{
         stage('RUN') {
             steps{
                 echo 'Run the app'
-                sh 'python3 app.py'
+                sh 'python3 app.py &'
             }
-        }
-        stage('RUN2') {
             parallel{
                 stage('TEST') {
                     steps{
@@ -17,6 +15,7 @@ pipeline{
                 }
             }
         }
+
         stage('STOP') {
             steps{
                 echo 'Exit the app'
