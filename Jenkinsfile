@@ -1,15 +1,13 @@
 pipeline{
     agent any
     stages{
+        timeout(120){
         stage('APP') {
             steps{
                 echo 'Run the app'
                 sh 'python3 app.py &'
             }
-            options {
-                timeout(time: 10, unit: 'SECONDS')
-            }
-        }
+        }}
         stage('TEST') {
             steps{
                 echo 'Test the app'
