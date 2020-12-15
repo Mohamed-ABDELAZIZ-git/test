@@ -9,8 +9,8 @@ pipeline{
             }
         }
         stage('TEST') {
-            waitUntil {sh 'nc -vz 0.0.0.0 5000'}
             steps{
+                waitUntil {sh 'nc -vz 0.0.0.0 5000'}
                 echo 'Test the app'
                 sh 'python3 Integration_test.py'
             }
