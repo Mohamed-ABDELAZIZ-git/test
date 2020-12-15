@@ -7,10 +7,10 @@ pipeline{
                 sh 'python3 app.py &'
             }
         }
-        timeout(time: 10, unit: 'SECONDS') { 
-            input 'Loading...' 
-        }
         stage('TEST') {
+            timeout(time: 10, unit: 'SECONDS') { 
+                input 'Loading...' 
+            }
             steps{
                 echo 'Test the app'
                 sh 'python3 Integration_test.py'
