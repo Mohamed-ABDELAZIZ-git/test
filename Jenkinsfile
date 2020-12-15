@@ -8,18 +8,16 @@ pipeline{
             }
         }
         stage('RUN2') {
-            parallel{
-                stage('TEST') {
-                    steps{
-                        echo 'Test the app'
-                        sh 'python3 Integration_test.py'
-                    }
+            stage('TEST') {
+                steps{
+                    echo 'Test the app'
+                    sh 'python3 Integration_test.py'
                 }
-                stage('STOP') {
-                    steps{
-                        echo 'Exit the app'
-                        sh 'killall'
-                    }
+            }
+            stage('STOP') {
+                steps{
+                    echo 'Exit the app'
+                    sh 'killall'
                 }
             }
         }
