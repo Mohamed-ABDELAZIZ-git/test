@@ -5,7 +5,7 @@ pipeline{
             steps{
                 echo 'Run the app'
                 waitUntil {
-                    test = sh 'nc -vz 0.0.0.0 5000'
+                    test = sh 'nc -vz 0.0.0.0 5000';
                     return test == 0;
                 }
                 sh 'python3 app.py &'
