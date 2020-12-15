@@ -5,10 +5,11 @@ pipeline{
             steps{
                 echo 'Run the app'
                 sh 'python3 app.py &'
-                sh "sleep 10"  
+              //  sh "sleep 10"  
             }
         }
         stage('TEST') {
+            waitUntil {sh 'nc -vz 0.0.0.0 5000'}
             steps{
                 echo 'Test the app'
                 sh 'python3 Integration_test.py'
