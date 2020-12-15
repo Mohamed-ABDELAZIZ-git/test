@@ -15,7 +15,7 @@ pipeline{
                 
                 
        script {
-         def r = sh script: nc -vz 0.0.0.0 5000', returnStdout: true
+         def r = sh script: 'nc -vz 0.0.0.0 5000', returnStdout: true
          return (r == 0);
        }
                 
