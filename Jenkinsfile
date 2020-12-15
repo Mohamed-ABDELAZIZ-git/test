@@ -7,12 +7,12 @@ pipeline{
                 echo 'Run the app'
                 sh 'python3 app.py &'
                 sh "sleep 10"
-                sh 'nc  0.0.0.0 5000 < /dev/null ; echo $?'
+                //sh 'nc  0.0.0.0 5000 < /dev/null ; echo $?'
             }
         }
         stage('TEST') {
             steps{
-                //waitUntil {sh 'nc -vz 0.0.0.0 5000'==1}
+                waitUntil {if (sh 'nc  0.0.0.0 5000 < /dev/null ; echo $?'==0) echo'waaw'}
                 echo 'Test the app'
                 sh 'python3 Integration_test.py'
             }
