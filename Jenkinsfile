@@ -7,19 +7,17 @@ pipeline{
                 sh 'python3 app.py &'
             }
         }
-        stage('RUN2') {
-            parallel{
-                stage('TEST') {
-                    steps{
-                        echo 'Test the app'
-                        sh 'python3 Integration_test.py'
-                    }
+        parallel{
+            stage('TEST') {
+                steps{
+                    echo 'Test the app'
+                    sh 'python3 Integration_test.py'
                 }
-                stage('STOP') {
-                    steps{
-                        echo 'Exit the app'
-                        sh '^C'
-                    }
+            }
+            stage('STOP') {
+                steps{
+                    echo 'Exit the app'
+                    sh '^C'
                 }
             }
         }
