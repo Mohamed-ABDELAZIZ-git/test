@@ -1,8 +1,8 @@
 pipeline{
     agent any
     stages{
-        timeout(120){
         stage('APP') {
+        timeout(120){
             steps{
                 echo 'Run the app'
                 sh 'python3 app.py &'
