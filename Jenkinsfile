@@ -5,6 +5,7 @@ pipeline{
             steps{
                 echo 'Run the app'
                 sh 'python3 app.py &'
+                sh "sleep 10"  
             }
         }
         stage('TEST') {
